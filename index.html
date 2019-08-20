@@ -53,7 +53,7 @@
         constructor() {
           super();
           this.state = {
-            company: {}
+            company: []
           };
         }
 
@@ -78,7 +78,11 @@
             return null;
           }
           return (
-            <h1>hello from single company</h1>
+            <ul>
+              {
+                company.map(_company => <li key={_company.id}>{_company.fiscalYear.slice(0,4)} ${_company.amount}</li>)
+              }
+            </ul>
           );
         }
       }
@@ -102,7 +106,7 @@
               <Route render={()=> <Nav companies={ companies } /> } />
               <Switch>
                 <Route exact path='/' component = { Home } />
-                <Route path='/companies' render ={ ({ match })=> <Companies companies={companies} match={ match }/> } />
+                <Route path='/companies/:id?' render ={ ({ match })=> <Companies companies={companies} match={ match }/> } />
                 <Redirect to='/' />
               </Switch>
             </HashRouter>
