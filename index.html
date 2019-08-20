@@ -80,7 +80,7 @@
           return (
             <ul>
               {
-                company.map(_company => <li key={_company.id}>{_company.fiscalYear.slice(0,4)} ${_company.amount}</li>)
+                company.map(_company => <li key={_company.id}>{_company.fiscalYear.slice(0,4)} <span>${_company.amount}</span></li>)
               }
             </ul>
           );
